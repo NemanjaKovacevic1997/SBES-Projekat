@@ -21,21 +21,10 @@ namespace Client
             binding.Security.Transport.ProtectionLevel = System.Net.Security.ProtectionLevel.EncryptAndSign;
 
             Console.WriteLine("User {0} ", WindowsIdentity.GetCurrent().Name);
-            EndpointAddress endpointAdress = new EndpointAddress(new Uri(address), EndpointIdentity.CreateSpnIdentity("udername@domen"));
-
-
+            EndpointAddress endpointAdress = new EndpointAddress(new Uri(address));
 
             using (ClientProxy proxy = new ClientProxy(binding, endpointAdress))
 			{
-                //proxy.AddUser("test", "test@123");
-                /*double CalculateElectricEnergy();
-                void ModifyValueOfId(int oldId, int newId);
-                void ModifyValueOfElectricEnergy(int id, double newElEnergy);
-                void AddNewEntity(int id, string name, double elEnergy);
-                void DeleteEntity(int id);
-                void DeleteWholeDatabase();
-                void ArchiveDatabase();  //?*/
-
                 string input;
                 bool done = false;
                 while (!done)
@@ -83,7 +72,7 @@ namespace Client
                             proxy.ModifyValueOfElectricEnergy(id, newElEnergy);
                             break;
                         case '4':
-                            //void AddNewEntity(int id, string name, double elEnergy);
+                            
                             int Id;
                             string name;
                             double elEnergy;
@@ -103,21 +92,31 @@ namespace Client
                                 break;
                             }
 
-
-
+                            proxy.AddNewEntity(Id, name, elEnergy);
 
                             break;
 
                         case '5':
+                            Console.WriteLine("ID : ");
+                            if (!int.TryParse(Console.ReadLine(), out Id))
+                            {
+                                Console.WriteLine("Greska");
+                                break;
+                            }
+
+                            proxy.DeleteEntity(Id);
+
                             break;
                         case '6':
+                            proxy.DeleteWholeDatabase();
                             break;
 
-
                         case '7':
+                            proxy.ArchiveDatabase();
                             break;
                         
                         default:
+                            done = true;
                             break;
                     }
                 }
@@ -128,7 +127,6 @@ namespace Client
 
         static string Meni()
         {
-            
             Console.WriteLine("Meni : " + Environment.NewLine);
             Console.WriteLine("1. Calculate electric energy" + Environment.NewLine);
             Console.WriteLine("2. Modify ID in database" + Environment.NewLine);
@@ -141,11 +139,6 @@ namespace Client
             string input = Console.ReadLine();
 
             return input;
-        }
-
-        static void ClientThread()
-        {
-            
         }
 	}
 }

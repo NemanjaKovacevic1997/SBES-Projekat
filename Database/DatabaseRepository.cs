@@ -24,7 +24,6 @@ namespace Database
                     ctx.UserMeters.Add(newUserMeter);
                     ctx.SaveChanges();
                 }
-
             }
         }
 
@@ -43,22 +42,6 @@ namespace Database
             }
         }
 
-        /*public void Modify(int oldId, UserMeter newUserMeter)
-        {
-            UserMeter oldUserMeter;
-            lock (Lock)
-            {
-                if ((oldUserMeter = ctx.UserMeters.Find(oldId)) == null)
-                    throw new Exception($"Element with ID : {oldId} not found.");
-                else
-                {
-                    oldUserMeter.Id = newUserMeter.Id;
-                    oldUserMeter.Name = newUserMeter.Name;
-                    oldUserMeter.ElectricEnergy = newUserMeter.ElectricEnergy;
-                    ctx.SaveChanges();
-                }
-            }
-        }*/
 
         public void ModifyId(int oldId, int newId)
         {
@@ -69,7 +52,6 @@ namespace Database
                     throw new Exception($"Element with ID : {oldId} not found.");
                 else
                 {
-                    //oldUserMeter.Id = newId; NE MOZE !
                     UserMeter newUserMeter = new UserMeter() { Id = newId, ElectricEnergy = oldUserMeter.ElectricEnergy, Name = oldUserMeter.Name };
                     Delete(oldId);
                     Add(newUserMeter);

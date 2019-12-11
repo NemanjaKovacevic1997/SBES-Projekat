@@ -13,7 +13,7 @@ namespace ServerSecurityManager
         {
             CustomPrincipal principal = operationContext.ServiceSecurityContext.
                 AuthorizationContext.Properties["Principal"] as CustomPrincipal;
-            return principal.IsInRole("Read");
+            return true;//principal.IsInRole("Read");
         }
     }
 }

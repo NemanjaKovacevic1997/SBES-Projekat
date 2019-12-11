@@ -16,17 +16,17 @@ namespace ServerSecurityManager
             Id = Guid.NewGuid().ToString();
         }
 
-        /*public ClaimSet Issuer
+        public ClaimSet Issuer
         {
             get { return ClaimSet.System; }
-        }*/
+        }
 
         public string Id
         {
             get;
         }
 
-        ClaimSet IAuthorizationPolicy.Issuer => ClaimSet.System;
+        //ClaimSet IAuthorizationPolicy.Issuer => ClaimSet.System;
 
         public bool Evaluate(EvaluationContext evaluationContext, ref object state)
         {

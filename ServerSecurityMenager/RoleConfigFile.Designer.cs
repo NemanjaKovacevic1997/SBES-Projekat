@@ -63,9 +63,9 @@ namespace ServerSecurityManager {
         /// <summary>
         ///   Looks up a localized string similar to CalculateEnergy,AddEntity,DeleteEntity.
         /// </summary>
-        public static string Administrator {
+        public static string Admin {
             get {
-                return ResourceManager.GetString("Administrator", resourceCulture);
+                return ResourceManager.GetString("Admin", resourceCulture);
             }
         }
         

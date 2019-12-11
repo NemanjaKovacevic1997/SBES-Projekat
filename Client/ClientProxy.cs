@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,37 +36,131 @@ namespace Client
 
         public void AddNewEntity(int id, string name, double elEnergy)
         {
-            throw new NotImplementedException();
+            
+            try
+            {
+                factory.AddNewEntity(id,name,elEnergy);
+            }
+            catch(SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch(SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         public void ArchiveDatabase()
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.ArchiveDatabase();
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public double CalculateElectricEnergy()
         {
-            throw new NotImplementedException();
+            double ret;
+            try
+            {
+                ret = factory.CalculateElectricEnergy();
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+                ret = -1;
+            }
+            catch (SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+                ret = -1;
+            }
+
+            return ret;
         }
 
         public void DeleteEntity(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.DeleteEntity(id);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void DeleteWholeDatabase()
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.DeleteWholeDatabase();
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void ModifyValueOfElectricEnergy(int id, double newElEnergy)
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.ModifyValueOfElectricEnergy(id, newElEnergy);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void ModifyValueOfId(int oldId, int newId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                factory.ModifyValueOfId(oldId, newId);
+            }
+            catch (SecurityException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            catch (SecurityAccessDeniedException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public void Dispose()
+        {
+            if (factory != null)
+            {
+                factory = null;
+            }
+
+            this.Close();
         }
     }
 }

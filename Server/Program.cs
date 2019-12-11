@@ -29,16 +29,14 @@ namespace Server
             host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
             host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
 
-
-            host.Authorization.ServiceAuthorizationManager = new CustomServiceAuthorizationManager();
-
+            //host.Authorization.ServiceAuthorizationManager = new CustomServiceAuthorizationManager();
             host.Authorization.PrincipalPermissionMode = PrincipalPermissionMode.Custom;
             List<IAuthorizationPolicy> policies = new List<IAuthorizationPolicy>();
             policies.Add(new CustomAuthorizationPolicy());
             host.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
 
-            host.Open();
 
+            host.Open();
             Console.WriteLine("User {0} ", WindowsIdentity.GetCurrent().Name);
 
             Console.WriteLine("SecurityService service is started.");
