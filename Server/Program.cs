@@ -1,6 +1,8 @@
 ﻿using ClientServerContracts;
+using ServerSecurityManager;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Policy;
 using System.Linq;
 using System.Security.Principal;
 using System.ServiceModel;
@@ -26,6 +28,14 @@ namespace Server
 
             host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
             host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+
+
+            host.Authorization.ServiceAuthorizationManager = new CustomServiceAuthorizationManager();
+
+            host.Authorization.PrincipalPermissionMode = PrincipalPermissionMode.Custom;
+            List<IAuthorizationPolicy> policies = new List<IAuthorizationPolicy>();
+            policies.Add(new CustomAuthorizationPolicy());
+            host.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
 
             host.Open();
 
