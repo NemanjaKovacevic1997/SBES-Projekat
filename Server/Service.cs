@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,39 +10,47 @@ namespace Server
 {
     class Service : IService
     {
+        [PrincipalPermission(SecurityAction.Demand, Role = "AddEntity")]
         public void AddNewEntity(int id, string name, double elEnergy)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("AddNewEntity");
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "MacroDBOperation")]
         public void ArchiveDatabase()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("ArchiveDatabase");
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "CalculateEnergy")]
         public double CalculateElectricEnergy()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("CalculateElectricEnergy");
+            return -1;
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "DeleteEntity")]
         public void DeleteEntity(int id)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("DeleteEntity");
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "MacroDBOperation")]
         public void DeleteWholeDatabase()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("DeleteWholeDatabase");
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
         public void ModifyValueOfElectricEnergy(int id, double newElEnergy)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("ModifyValueOfElectricEnergy");
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = "Modify")]
         public void ModifyValueOfId(int oldId, int newId)
         {
-            throw new NotImplementedException();
+            Console.WriteLine("ModifyValueOfId");
         }
     }
 }

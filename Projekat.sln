@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientServerContracts", "Cl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{433AC0A5-581D-4081-A78E-6924318BFB84}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerSecurityManager", "ServerSecurityMenager\ServerSecurityManager.csproj", "{35E1C183-9E62-40CB-ACF1-BC837C269095}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{433AC0A5-581D-4081-A78E-6924318BFB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433AC0A5-581D-4081-A78E-6924318BFB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{433AC0A5-581D-4081-A78E-6924318BFB84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E1C183-9E62-40CB-ACF1-BC837C269095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E1C183-9E62-40CB-ACF1-BC837C269095}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E1C183-9E62-40CB-ACF1-BC837C269095}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E1C183-9E62-40CB-ACF1-BC837C269095}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
